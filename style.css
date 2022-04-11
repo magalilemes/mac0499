@@ -14,10 +14,16 @@ body {
     font-size: 36px;
     text-align: center;
 }
-header{
+header {
     color: #E7D2CC;
 }
-.menu a {
+li {
+    display: inline-block;
+}
+#proposta > a {
+    flex-grow: 1;
+}
+.menu a, .menu div {
     background-color: #B9B7BD;
     padding: 10px;
     text-decoration: none;
@@ -25,6 +31,6 @@ header{
     color: #EEEDE7;
     display: block;
 }
-.menu a:hover {
+.menu a:hover, .menu div:hover {
     background-color: #E7D2CC;
 }
