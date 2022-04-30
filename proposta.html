@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAC0499 - Proposta</title>
+    <link rel="icon" type="image/x-icon" href="https://freesvg.org/img/princesspenguin.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="coluna">
+        <h1 class="center">Proposta: MAC0499 - Trabalho de Conclusão de Curso</h1>
+
+        Orientador: Paulo Meirelles<br>
+        Coorientador: Rodrigo Siqueira<br><br>
+
+        Estudante: Magali Lemes
+
+        <h2>Implementação de testes de unidade no kernel Linux: uma observação
+        participante do driver de display da AMD</h2>
+
+        <h3>Introdução</h3>
+        <p>Durante o desenvolvimento de software, testes são uma das formas de
+        garantir a estabilidade do produto e evitar regressões<sup><a href="#fn1" id="ref1">1</a></sup>.
+        No desenvolvimento do kernel Linux, isso não é diferente, uma vez que
+        existem diferentes ferramentas internas e externas ao projeto que
+        possibilitam sua testagem.</p>
+        <p>Das opções disponíveis para realizar testes relacionados ao kernel
+        Linux, o objeto de interesse deste trabalho é o KUnit<sup><a href="#fn2" id="ref2">2</a></sup>,
+        framework para testes de unidade. Testes de unidade testam
+        individualmente os menores componentes possíveis do código, como funções
+        e classes. Eles são importantes, pois permitem que erros sejam
+        encontrados de forma mais perceptível, viabilizam refatorações e
+        fornecem, de certa forma, uma documentação acerca do comportamento
+        esperado de uma certa unidade de código.</p>
+        <p>Neste trabalho, para entendermos como implementar testes de unidade
+        no kernel Linux, teremos como alvo o drive de GPU da AMD. Mais
+        especificamente, como parte integrante desse driver, existe o <span class="italic">Display
+        Mode Library (DML)</span>, a biblioteca matemática responsável por calcular
+        parâmetros de <span class="italic">clock</span>, <span class="italic">watermark</span>
+        e <span class="italic">bandwidth</span> para a arquitetura <span class="italic">Display
+        Core Next (DCN)</span><sup><a href="#fn3" id="ref3">3</a></sup>.</p>
+        <p>Há duas opções para executar os testes escritos com o KUnit. Na
+        primeira, utiliza-se um script em Python disponível no código-fonte do
+        kernel Linux, que configura, executa e apresenta o resultado dos testes.
+        A outra opção permite compilar os testes tanto de forma embutida ao
+        kernel quanto como módulo, obtendo os resultados no log do kernel Linux
+        com o comando <span class="ms">dmesg</span>. A nossa prioridade será executar os testes como
+        módulo em um hardware real, utilizando a placa de vídeo AMD Radeon 5700
+        XT<sup><a href="#fn4" id="ref4">4</a></sup>, que utiliza o DCN e,
+        consequentemente, faz uso das funções do DML.</p>
+
+        <h3>Objetivos</h3>
+        <p>O objetivo principal do trabalho é explorar e entender como
+        implementar testes automatizados no contexto do desenvolvimento do
+        Linux, a partir da inclusão de testes de unidade no driver de GPU da
+        AMD. Além disso, investigaremos como gerar relatórios de cobertura de
+        teste e garantir a integração desses testes com o IGT GPU Tools<sup><a href="#fn5" id="ref5">5</a></sup>,
+        uma ferramenta de testes de integração do subsistema DRM (<span class="italic">Direct
+        Rendering Manager</span>).</p>
+
+        <h3>Metodologia</h3>
+        <p>A fim de atingir o principal objetivo do trabalho, é necessário,
+        primeiramente, compreender o fluxo de colaboração do kernel Linux –
+        especificamente no subsistema de display da AMD –, realizando
+        contribuições de código. Após a adaptação com o processo de
+        desenvolvimento do kernel, serão produzidos testes de unidade focados em
+        cobrir partes do DML, utilizando o framework KUnit.</p>
+        <p>Do ponto de vista metodológico, conduziremos uma observação
+        participante, uma abordagem utilizada em pesquisas qualitativas e
+        etnográficas. No contexto deste trabalho, estaremos próximos e
+        interagindo com um grupo de indivíduos (no caso, desenvolvedores e
+        mantenedores do kernel Linux, interessados ou contribuidores do
+        desenvolvimento do driver de GPU da AMD). Com isso, aprenderemos suas
+        práticas e colaboraremos com esse grupo por um certo período de tempo,
+        coletando dados e sistematizando as lições aprendidas ao longo do nosso
+        processo de contribuição.</p>
+
+        <h3>Cronograma</h3>
+        <p>Os estudos relacionados ao driver de GPU da AMD e atividades
+        introdutórias de contribuição para o kernel Linux, para a realização
+        deste trabalho de conclusão de curso, começaram a ser executados em
+        janeiro de 2022. O cronograma proposto com as macro-atividades previstas
+        está apresentado na Tabela 1.
+        </p>
+
+        <table style="width:100%">
+           <caption align="bottom">Tabela 1: Cronograma previsto</caption>
+            <tr>
+                <th>Atividades / Meses</th>
+              <th>J/F</th>
+              <th>M/A</th>
+              <th>M/J</th>
+              <th>J/A</th>
+              <th>S/O</th>
+              <th>N/D</th>
+            </tr>
+            <tr>
+              <td>Habituação com o fluxo de desenvolvimento do Linux</td>
+              <td>#</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Realização de contribuições iniciais para o subsistema de display da AMD</td>
+              <td>#</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Estudo do KUnit para o desenvolvimento de testes unitários</td>
+              <td></td>
+              <td></td>
+              <td>#</td>
+              <td>#</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Desenvolvimento de testes para o driver</td>
+              <td></td>
+              <td>#</td>
+              <td>#</td>
+              <td>#</td>
+              <td>#</td>
+              <td></td>
+            </tr>
+              <tr>
+              <td>Escrita da monografia</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>#</td>
+              <td>#</td>
+            </tr>
+        </table>
+
+        <hr>
+        <sup id="fn1"><a href="#ref1">1.</a> Modificações que causam comportamentos inesperados em um código que funcionava anteriormente.</sup><br>
+        <sup id="fn2"><a href="#ref2">2.</a> <a href="https://kunit.dev/">https://kunit.dev/</a></sup><br>
+        <sup id="fn3"><a href="#ref3">3.</a> <a href="https://www.kernel.org/doc/html/latest/gpu/amdgpu/display/dcn-overview.html">https://www.kernel.org/doc/html/latest/gpu/amdgpu/display/dcn-overview.html</a></sup><br>
+        <sup id="fn4"><a href="#ref4">4.</a> A AMD fez uma doação de placas de vídeo AMD Radeon 5700 XT para nossos estudos. Elas estão instaladas em máquinas do Laboratório de Sistemas, no CCSL-IME-USP.</sup><br>
+        <sup id="fn5"><a href="#ref5">5.</a> <a href="https://gitlab.freedesktop.org/drm/igt-gpu-tools">https://gitlab.freedesktop.org/drm/igt-gpu-tools</a></sup><br>
+    </div>
+</body>
+</html>

@@ -5,15 +5,13 @@ proposta.addEventListener("mouseenter", function(){
 
     let html_link = document.createElement("a");
     let pdf_link = document.createElement("a");
-    let tex_link = document.createElement("a");
 
-    html_link.setAttribute("href", "#");
-    pdf_link.setAttribute("href", "#");
-    tex_link.setAttribute("href", "#");
+    html_link.setAttribute("href", "./proposta.html");
+    pdf_link.setAttribute("href", "./proposta.pdf");
+    pdf_link.setAttribute("target", "_blank");
 
     html_link.innerHTML = "HTML";
     pdf_link.innerHTML = "PDF";
-    tex_link.innerHTML = "TeX";
 
     proposta.style.padding = "0";
     proposta.style.display = "flex";
@@ -21,7 +19,6 @@ proposta.addEventListener("mouseenter", function(){
 
     proposta.appendChild(html_link);
     proposta.appendChild(pdf_link);
-    proposta.appendChild(tex_link);
 });
 
 proposta.addEventListener("mouseleave", function(){
