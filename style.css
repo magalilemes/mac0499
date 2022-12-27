@@ -17,13 +17,13 @@ a:visited {
 body {
     display: table-cell;
     vertical-align: middle;
-    background-color: #868B8E;
+    background-color: #e8e9ed;
     font-family: 'Raleway', sans-serif;
     font-size: 36px;
     text-align: center;
 }
 header, h1 {
-    color: #E7D2CC;
+    color: #ff7b9c;
 }
 h1 {
     font-size: 35px;
@@ -51,11 +51,20 @@ td:first-child {
     margin: auto;
     width: 60%;
 }
-#proposta > a {
-    flex: 1 1 0;
+#home {
+    width: 700px;
+}
+#pdf {
+    background-color: #babfd1;
+    border-radius: 5px;
+    padding: 4px;
 }
 .center {
     text-align: center;
+}
+.info {
+    font-size: 20px;
+    text-align: justify;
 }
 .italic {
     font-style: italic;
@@ -64,18 +73,24 @@ td:first-child {
     font-family: monospace;
 }
 .menu a, .menu div {
-    background-color: #B9B7BD;
-    padding: 10px;
+    padding: 6px 15px;
     text-decoration: none;
-    border: 1px solid #868B8E;
     color: #EEEDE7;
-    display: block;
+    display: inline;
 }
 .menu a:hover, .menu div:hover {
-    background-color: #E7D2CC;
+    background-color: #607196;
+}
+.menu {
+    background-color: #babfd1;
+    padding: 3px;
+}
+.resumo {
+    font-size: 18px;
+    text-align: justify;
 }
 @media only screen and (max-width: 600px) {
     #coluna {
         width: 95%;
     }
-  }
+}
